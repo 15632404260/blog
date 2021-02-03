@@ -100,12 +100,12 @@ Welcome to = 秦殇的博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclhpw3lwj20zk0m8gvw.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeybxm1pj20zk0m8niv.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -149,26 +149,38 @@ Welcome to = 秦殇的博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h3 id="一、定义："><a href="#一、定义：" class="headerlink" title="一、定义："></a>一、定义：</h3><blockquote>
+    <h3 id="一-定义"><a class="markdownIt-Anchor" href="#一-定义">#</a> 一、定义：</h3>
+<blockquote>
 <p>路由钩子函数就是在发生路由跳转时，在每个时机调用的函数</p>
 </blockquote>
-<h3 id="二、分类："><a href="#二、分类：" class="headerlink" title="二、分类："></a>二、分类：</h3><h4 id="1-全局钩子函数"><a href="#1-全局钩子函数" class="headerlink" title="1.全局钩子函数"></a>1.全局钩子函数</h4><ul>
-<li><p>全局钩子函数有两个：beforeEach 和 afterEach，由路由实例调用执行</p>
+<h3 id="二-分类"><a class="markdownIt-Anchor" href="#二-分类">#</a> 二、分类：</h3>
+<h4 id="1全局钩子函数"><a class="markdownIt-Anchor" href="#1全局钩子函数">#</a> 1. 全局钩子函数</h4>
+<ul>
+<li>
+<p>全局钩子函数有两个：beforeEach 和 afterEach，由路由实例调用执行</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ① beforeEach</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//to：路由跳转目标路由对象</span></span><br><span class="line"><span class="comment">//from：路由跳转离开路由对象。</span></span><br><span class="line"><span class="comment">//next：是一个function，必须被执行，否则不会进行路由跳转，如果next(false)，同样不会执行跳转。next()参数为url路径，则会发生重定向</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ② afterEach</span></span><br><span class="line">router.afterEach(<span class="function">(<span class="params">to, <span class="keyword">from</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.title = to.meta.title || <span class="string">&#x27;&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="2-某个路由独享的钩子函数"><a href="#2-某个路由独享的钩子函数" class="headerlink" title="2.某个路由独享的钩子函数"></a>2.某个路由独享的钩子函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">            component: index,</span><br><span class="line">            meta: &#123;<span class="attr">title</span>: <span class="string">&#x27;首页&#x27;</span>&#125;,</span><br><span class="line">            <span class="function"><span class="title">beforeEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">              next()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            path: <span class="string">&#x27;/xxx&#x27;</span>,</span><br><span class="line">            name: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">            component: About,</span><br><span class="line">            meta: &#123;</span><br><span class="line">              title: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">              auth: <span class="literal">true</span> <span class="comment">// 该路由需要登录权限</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="3-组件内的钩子函数"><a href="#3-组件内的钩子函数" class="headerlink" title="3.组件内的钩子函数"></a>3.组件内的钩子函数</h4><blockquote>
-<p>组件内的钩子函数有三个：beforeRouteEnter，beforeRouteUpdate、beforeRouteLeave，直接被定义在每个vm实例上</p>
+<h4 id="2某个路由独享的钩子函数"><a class="markdownIt-Anchor" href="#2某个路由独享的钩子函数">#</a> 2. 某个路由独享的钩子函数</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">            component: index,</span><br><span class="line">            meta: &#123;<span class="attr">title</span>: <span class="string">&#x27;首页&#x27;</span>&#125;,</span><br><span class="line">            <span class="function"><span class="title">beforeEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">              next()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            path: <span class="string">&#x27;/xxx&#x27;</span>,</span><br><span class="line">            name: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">            component: About,</span><br><span class="line">            meta: &#123;</span><br><span class="line">              title: <span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">              auth: <span class="literal">true</span> <span class="comment">// 该路由需要登录权限</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="3组件内的钩子函数"><a class="markdownIt-Anchor" href="#3组件内的钩子函数">#</a> 3. 组件内的钩子函数</h4>
+<blockquote>
+<p>组件内的钩子函数有三个：beforeRouteEnter，beforeRouteUpdate、beforeRouteLeave，直接被定义在每个 vm 实例上</p>
 </blockquote>
 </li>
 </ul>
-<h5 id="1-beforeRouteEnter"><a href="#1-beforeRouteEnter" class="headerlink" title="(1) beforeRouteEnter"></a>(1) beforeRouteEnter</h5><p>进入组件前被调用，此时组件实例还没有被创建，所以函数内部不能访问this，如果需要访问当前vue实例，可以通过next() 方法的回调函数接收一个vm实例。<br>应用：访问当前vue实例的属性</p>
+<h5 id="1-beforerouteenter"><a class="markdownIt-Anchor" href="#1-beforerouteenter">#</a> (1) beforeRouteEnter</h5>
+<p>进入组件前被调用，此时组件实例还没有被创建，所以函数内部不能访问 this，如果需要访问当前 vue 实例，可以通过 next () 方法的回调函数接收一个 vm 实例。<br>
+应用：访问当前 vue 实例的属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            msg: <span class="string">&#x27;这是消息&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">        <span class="comment">/* 访问当前vue实例 */</span></span><br><span class="line">        next(<span class="function"><span class="params">vm</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(vm.msg)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-beforeRouteUpdate"><a href="#2-beforeRouteUpdate" class="headerlink" title="(2) beforeRouteUpdate"></a>(2) beforeRouteUpdate</h5><p>在路由发生变化，但是组件被复用时被调用。</p>
+<h5 id="2-beforerouteupdate"><a class="markdownIt-Anchor" href="#2-beforerouteupdate">#</a> (2) beforeRouteUpdate</h5>
+<p>在路由发生变化，但是组件被复用时被调用。</p>
 <p>应用：父路由监听子路由变化</p>
 <p>router.js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">routes: [&#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home,</span><br><span class="line">    children: [&#123;</span><br><span class="line">        path: <span class="string">&#x27;goods&#x27;</span>,</span><br><span class="line">        name: <span class="string">&#x27;Goods&#x27;</span>,</span><br><span class="line">        component: Goods,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        path: <span class="string">&#x27;about&#x27;</span>,</span><br><span class="line">        name: <span class="string">&#x27;About&#x27;</span>,</span><br><span class="line">        component: About,</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
-<h6 id="xxx-vue"><a href="#xxx-vue" class="headerlink" title="xxx.vue"></a>xxx.vue</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;子路由发生变化&#x27;</span>)</span><br><span class="line">        next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#####(3) beforeRouteLeave<br>离开组件时被调用，可以用来阻止页面离开，或者离开前销毁定时器等。<br>应用：页面离开前清除定时器</p>
+<h6 id="xxxvue"><a class="markdownIt-Anchor" href="#xxxvue">#</a> xxx.vue</h6>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;子路由发生变化&#x27;</span>)</span><br><span class="line">        next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#####(3) beforeRouteLeave<br>
+ 离开组件时被调用，可以用来阻止页面离开，或者离开前销毁定时器等。<br>
+应用：页面离开前清除定时器</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    beforeRouteLeave (to, <span class="keyword">from</span>, next) &#123;</span><br><span class="line">       <span class="built_in">window</span>.clearInterval(<span class="built_in">this</span>.timer) <span class="comment">//清除定时器</span></span><br><span class="line">       next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
 
@@ -235,7 +247,7 @@ Welcome to = 秦殇的博客</title>
     <div class="item left">
       
 
-  <a href="/2018/08/12/Vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclil3m4ej20zk0m8tn8.jpg" title="Vue路由拦截器">
+  <a href="/2018/08/12/Vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="Vue路由拦截器">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Vue路由拦截器</h3>
@@ -245,7 +257,7 @@ Welcome to = 秦殇的博客</title>
     <div class="item right">
       
 
-  <a href="/2018/09/06/Vue%E7%88%B6%E5%AD%90%E9%97%B4%E9%80%9A%E4%BF%A1/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclip4jbpj20zk0m87cv.jpg" title="Vue父子间通信">
+  <a href="/2018/09/06/Vue%E7%88%B6%E5%AD%90%E9%97%B4%E9%80%9A%E4%BF%A1/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevarprfj20zk0m8npd.jpg" title="Vue父子间通信">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Vue父子间通信</h3>
@@ -267,7 +279,7 @@ Welcome to = 秦殇的博客</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">一、定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E7%B1%BB%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">二、分类：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%85%A8%E5%B1%80%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">1.全局钩子函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9F%90%E4%B8%AA%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">2.某个路由独享的钩子函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BB%84%E4%BB%B6%E5%86%85%E7%9A%84%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">3.组件内的钩子函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-beforeRouteEnter"><span class="toc-number">2.3.1.</span> <span class="toc-text">(1) beforeRouteEnter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-beforeRouteUpdate"><span class="toc-number">2.3.2.</span> <span class="toc-text">(2) beforeRouteUpdate</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#xxx-vue"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">xxx.vue</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text"> 一、定义：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text"> 二、分类：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%85%A8%E5%B1%80%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 全局钩子函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E6%9F%90%E4%B8%AA%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. 某个路由独享的钩子函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E7%BB%84%E4%BB%B6%E5%86%85%E7%9A%84%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. 组件内的钩子函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-beforerouteenter"><span class="toc-number">2.3.1.</span> <span class="toc-text"> (1) beforeRouteEnter</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-beforerouteupdate"><span class="toc-number">2.3.2.</span> <span class="toc-text"> (2) beforeRouteUpdate</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#xxxvue"><span class="toc-number">2.3.2.1.</span> <span class="toc-text"> xxx.vue</span></a></li></ol></li></ol></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
       </div>
@@ -338,15 +350,6 @@ Welcome to = 秦殇的博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2018/10/08/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="支付宝三方支付">支付宝三方支付</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2018/08/12/Vue%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA%E5%99%A8/" title="Vue路由拦截器">Vue路由拦截器</a></span>
   </li>
 
@@ -365,6 +368,15 @@ Welcome to = 秦殇的博客</title>
 <div class="breadcrumb">
 </div>
 
+    <span><a href="/2018/08/20/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" title="Vue路由钩子">Vue路由钩子</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
     <span><a href="/2018/09/06/Vue%E7%88%B6%E5%AD%90%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vue父子间通信">Vue父子间通信</a></span>
   </li>
 
@@ -374,7 +386,7 @@ Welcome to = 秦殇的博客</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2018/08/20/Vue%E8%B7%AF%E7%94%B1%E9%92%A9%E5%AD%90/" title="Vue路由钩子">Vue路由钩子</a></span>
+    <span><a href="/2018/10/08/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="支付宝三方支付">支付宝三方支付</a></span>
   </li>
 
   </ul>

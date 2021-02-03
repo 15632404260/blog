@@ -100,12 +100,12 @@ Welcome to = 秦殇的博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciukx8a7j20zk0m8aio.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipewf5l51j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
         </ul>
       </div>
     </header>
@@ -150,7 +150,7 @@ Welcome to = 秦殇的博客</title>
     
 
     <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">先通过注册的微博拿到 App Key 和 App Secret</span><br><span class="line">填写回调地址</span><br></pre></td></tr></table></figure>
-<p>请求方式和URL：</p>
+<p>请求方式和 URL：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET/POST   https:<span class="comment">//api.weibo.com/oauth2/authorize</span></span><br></pre></td></tr></table></figure>
 <p>前端的扫码地址</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;https://api.weibo.com/oauth2/authorize?</span></span><br><span class="line"><span class="string">            client_id=1968976007&amp;</span></span><br><span class="line"><span class="string">            redirect_uri=http://127.0.0.1:8080/wb_return_url&quot;</span>&gt;微博登录&lt;/a&gt;</span><br><span class="line">            &lt;!-- client_id是App Key --&gt;</span><br><span class="line">            &lt;!-- redirect_url是填写的回调地址 --&gt;</span><br></pre></td></tr></table></figure>
@@ -162,7 +162,7 @@ Welcome to = 秦殇的博客</title>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def get_weibo_accesstoken(code):</span><br><span class="line">    # 获取 access_token 的必要参数 ↓</span><br><span class="line">    url = <span class="string">&#x27;https://api.weibo.com/oauth2/access_token&#x27;</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        &#x27;client_id&#x27;: &#x27; &#x27;,  # 创建应用的 App Key</span><br><span class="line">        &#x27;client_secret&#x27;: &#x27; &#x27;,  # 创建应用的 App Secret</span><br><span class="line">        &#x27;grant_type&#x27;: &#x27;authorization_code&#x27;,  # 文档 写死</span><br><span class="line">        &#x27;redirect_uri&#x27;: &#x27; &#x27;,  # 回调地址</span><br><span class="line">        &#x27;code&#x27;: code  # 接收到的编码</span><br><span class="line">    &#125;</span><br><span class="line">    # 构造 post 对 weibo 的 url 发起请求</span><br><span class="line">    res = requests.post(url=url, data=data).text</span><br><span class="line">        # 得到请求转换为 字典 然后 取 键</span><br><span class="line">    <span class="keyword">return</span> json.loads(res)[<span class="string">&#x27;access_token&#x27;</span>]</span><br></pre></td></tr></table></figure>
 <p>查询 Access_token 的相关信息 (获取 微博 唯一标识符 uid)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def get_weibo_userinfo(access_token):</span><br><span class="line">    url = <span class="string">&#x27;https://api.weibo.com/oauth2/get_token_info&#x27;</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&#x27;access_token&#x27;</span>: access_token,</span><br><span class="line">    &#125;</span><br><span class="line">    res = requests.post(url=url, data=data).text</span><br><span class="line">    <span class="keyword">return</span> json.loads(res)[<span class="string">&#x27;uid&#x27;</span>]</span><br></pre></td></tr></table></figure>
-<p>model表</p>
+<p>model 表</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Social(models.Model):</span><br><span class="line">    uid = models.CharField(max_length=<span class="number">100</span>, verbose_name=<span class="string">&#x27;uid&#x27;</span>)</span><br><span class="line">    user = models.ForeignKey(<span class="string">&#x27;User&#x27;</span>, on_delete=models.CASCADE)</span><br><span class="line"></span><br><span class="line">    THIRD_PARTY_CHOICE = &#123;</span><br><span class="line">         (<span class="number">1</span>, <span class="string">&#x27;QQ&#x27;</span>),</span><br><span class="line">         (<span class="number">2</span>, <span class="string">&#x27;微信&#x27;</span>),</span><br><span class="line">         (<span class="number">3</span>, <span class="string">&#x27;微博&#x27;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    third_party = models.IntegerField(choices=THIRD_PARTY_CHOICE)</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        <span class="keyword">return</span> self.user.name</span><br></pre></td></tr></table></figure>
 <p>判断 用户之前 是否绑定过 微博，绑定过 就直接登录，没绑定过 重新 绑定一下</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Get_WeiBo_Code(APIView):</span><br><span class="line">    def post(self, request):</span><br><span class="line">        code = request.data[<span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">        print(code)</span><br><span class="line">        # 通过 code 获取授权的 access_token</span><br><span class="line">        access_token = get_weibo_accesstoken(code)</span><br><span class="line">        uid = get_weibo_userinfo(access_token)</span><br><span class="line">        # 从数据库 取 数据判断 用户是否 注册过</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            s = models.Social.objects.get(</span><br><span class="line">                third_party=3,  # 直接绑定微博</span><br><span class="line">                uid=uid</span><br><span class="line">            )</span><br><span class="line">        except:</span><br><span class="line">            # 当 抛出异常就代表没有（微博用户）</span><br><span class="line">            # 给出对应的 数据</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                <span class="string">&#x27;code&#x27;</span>: <span class="string">&#x27;10030&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;用户不存在，请绑定本站&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;uid&#x27;</span>: uid</span><br><span class="line">            &#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            # 没有 异常 代表曾经注册过</span><br><span class="line">            # 生成 token 保存登录状态</span><br><span class="line">            data = &#123;</span><br><span class="line">                <span class="string">&#x27;id&#x27;</span>: s.user.id,</span><br><span class="line">                <span class="string">&#x27;email&#x27;</span>: s.user.email</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            jwt_token = t.dumps(data).decode()</span><br><span class="line">            # 发送到前台</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;</span><br><span class="line">                <span class="string">&#x27;code&#x27;</span>: <span class="number">200</span>,</span><br><span class="line">                <span class="string">&#x27;message&#x27;</span>: <span class="string">&#x27;您是本站的老用户&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;token&#x27;</span>: jwt_token,</span><br><span class="line">                <span class="string">&#x27;email&#x27;</span>: s.user.email</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
@@ -231,7 +231,7 @@ Welcome to = 秦殇的博客</title>
     <div class="item left">
       
 
-  <a href="/2018/09/06/Vue%E7%88%B6%E5%AD%90%E9%97%B4%E9%80%9A%E4%BF%A1/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4baakhj20zk0m8h5q.jpg" title="Vue父子间通信">
+  <a href="/2018/09/06/Vue%E7%88%B6%E5%AD%90%E9%97%B4%E9%80%9A%E4%BF%A1/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexj2jgzj20zk0m8b09.jpg" title="Vue父子间通信">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Vue父子间通信</h3>
@@ -241,7 +241,7 @@ Welcome to = 秦殇的博客</title>
     <div class="item right">
       
 
-  <a href="/2018/10/08/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="支付宝三方支付">
+  <a href="/2018/10/08/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="支付宝三方支付">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>支付宝三方支付</h3>
@@ -333,6 +333,15 @@ Welcome to = 秦殇的博客</title>
 <div class="breadcrumb">
 </div>
 
+    <span><a href="/2018/10/08/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="支付宝三方支付">支付宝三方支付</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
     <span><a href="/2018/09/06/Vue%E7%88%B6%E5%AD%90%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vue父子间通信">Vue父子间通信</a></span>
   </li>
 
@@ -352,15 +361,6 @@ Welcome to = 秦殇的博客</title>
 </div>
 
     <span><a href="/2018/10/01/%E5%BE%AE%E5%8D%9A%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95/" title="微博三方登录">微博三方登录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2018/10/08/%E6%94%AF%E4%BB%98%E5%AE%9D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="支付宝三方支付">支付宝三方支付</a></span>
   </li>
 
       
