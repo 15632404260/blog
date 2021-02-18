@@ -2927,17 +2927,11 @@ main >.inner {
   top: -10%;
   left: -10%;
 }
-.social .item.github::before {
-  background-color: #191717;
+.social .item.::before {
+  background-color: ;
 }
-.social .item.github i {
-  color: #191717;
-}
-.social .item.weibo::before {
-  background-color: #ea716e;
-}
-.social .item.weibo i {
-  color: #ea716e;
+.social .item. i {
+  color: ;
 }
 .social .item:focus i,
 .social .item:hover i {
