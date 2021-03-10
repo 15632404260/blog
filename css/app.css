@@ -2927,29 +2927,11 @@ main >.inner {
   top: -10%;
   left: -10%;
 }
-.social .item.github::before {
-  background-color: ttps://gitee.com/prince-of-qin/blog.gi;
+.social .item.::before {
+  background-color: ;
 }
-.social .item.github i {
-  color: ttps://gitee.com/prince-of-qin/blog.gi;
-}
-.social .item.music::before {
-  background-color: ttps://music.163.com/#/song?id=137614215;
-}
-.social .item.music i {
-  color: ttps://music.163.com/#/song?id=137614215;
-}
-.social .item.weibo::before {
-  background-color: ttps://weibo.com/7480925812/profile?rightmod=1&wvr=6&mod=personinfo&is_all=;
-}
-.social .item.weibo i {
-  color: ttps://weibo.com/7480925812/profile?rightmod=1&wvr=6&mod=personinfo&is_all=;
-}
-.social .item.email::before {
-  background-color: jq15632404260@163.co;
-}
-.social .item.email i {
-  color: jq15632404260@163.co;
+.social .item. i {
+  color: ;
 }
 .social .item:focus i,
 .social .item:hover i {
